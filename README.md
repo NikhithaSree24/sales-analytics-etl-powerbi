@@ -1,6 +1,11 @@
+
 # Sales Analytics ETL Pipeline & Power BI Dashboard
 
 An end-to-end sales analytics project using Python, Pandas, MySQL, SQL, and Power BI.
+
+## Power BI Dashboard
+
+![Sales Analytics Dashboard](dashboard.jpeg)
 
 ## Project Overview
 
@@ -39,7 +44,7 @@ Python ETL Pipeline
       |
       +--> Validate required columns and numeric values
       |
-      +--> Remove exact duplicates
+      +--> Remove exact duplicate records
       |
       +--> Clean dates
       |
@@ -81,8 +86,8 @@ The source Excel file contains 520 rows and 7 columns:
 The ETL pipeline adds three derived columns:
 
 - **Profit:** Sales minus Cost
-- **Year:** Extracted from Order_Date
-- **Month:** Extracted from Order_Date
+- **Year:** Extracted from `Order_Date`
+- **Month:** Extracted from `Order_Date`
 
 The expected cleaned output contains 482 rows and 10 columns after removing exact duplicate records and rows with invalid dates.
 
@@ -92,6 +97,8 @@ These counts describe the supplied dataset; the output may differ if the source 
 
 ```text
 Sales-Analytics-ETL-Project/
+├── images/
+│   └── dashboard.jpeg
 ├── etl_pipeline.py
 ├── test_etl_pipeline.py
 ├── test_db_connection.py
@@ -107,7 +114,7 @@ Sales-Analytics-ETL-Project/
 └── README.md
 ```
 
-The filenames shown above describe the intended project structure. Keep the dashboard filename consistent with the file actually included in your repository.
+The dashboard screenshot is included in the README using the relative path `dashboard.jpeg`. If the image is stored inside the `images` folder instead, update the Markdown path to `images/dashboard.jpeg`.
 
 ## Setup and Installation
 
@@ -117,7 +124,7 @@ The filenames shown above describe the intended project structure. Keep the dash
 - MySQL Server, if you want to use database integration
 - Power BI Desktop, if you want to open the dashboard
 
-### 2. Install dependencies
+### 2. Install Dependencies
 
 Create and activate a virtual environment if you haven't already.
 
@@ -151,7 +158,7 @@ Replace the example values with your local MySQL credentials. Never commit `.env
 
 The pipeline checks whether the destination table already exists and avoids replacing it. If the table exists, review it before deciding how to proceed.
 
-### 4. Run the ETL pipeline
+### 4. Run the ETL Pipeline
 
 From the project directory, run:
 
@@ -163,7 +170,7 @@ The script uses `sales_raw_500.xlsx` as its default input and writes the cleaned
 
 The script also attempts MySQL loading when run directly. Ensure your database settings are configured first.
 
-### 5. Run the automated tests
+### 5. Run the Automated Tests
 
 ```powershell
 python -m pytest test_etl_pipeline.py -v
@@ -171,7 +178,7 @@ python -m pytest test_etl_pipeline.py -v
 
 The tests cover duplicate and invalid-date handling, profit calculation, Year and Month creation, missing required columns, and invalid numeric values.
 
-### 6. Test the database connection
+### 6. Test the Database Connection
 
 After configuring `.env` and starting MySQL, run:
 
@@ -190,7 +197,7 @@ The `analysis_queries.sql` file contains queries for:
 
 These queries use the `sales_analytics` database and `sales_data` table.
 
-## Power BI Dashboard
+## Power BI Dashboard Features
 
 The dashboard supports sales and profitability analysis through:
 
@@ -200,7 +207,7 @@ The dashboard supports sales and profitability analysis through:
 - Monthly sales and profit trends.
 - Year, region, and product slicers for filtering the report.
 
-Open the included `.pbix` file in Power BI Desktop to explore the report.
+Open `Sales_Analytics_Dashboard.pbix` in Power BI Desktop to explore the interactive report.
 
 ## Key Skills Demonstrated
 
@@ -221,7 +228,7 @@ Open the included `.pbix` file in Power BI Desktop to explore the report.
 - Add incremental database loading.
 - Automate pipeline execution.
 - Expand test coverage to include CSV export and database loading.
-- Add dashboard screenshots and sample business findings.
+- Add more dashboard screenshots and sample business findings.
 
 ## Attribution
 
@@ -230,4 +237,3 @@ This project is adapted and extended from the original work by **Piyush Nirmal**
 Additional work in this version includes ETL validation, database overwrite protection, automated transformation tests, SQL analysis queries, database connection testing, and dashboard refinements.
 
 The original MIT License and copyright notice are retained. See `LICENSE` for details.
-
